@@ -6,41 +6,33 @@ public abstract class Conta {
 	private Integer conta;
 	private String titular;
 	private Double limite;
-	private Double saldo;
+	private Double saldo = 0.0;
 	private Double valorLimite;
 	
 	/**
 	 * @param agencia
 	 * @param conta
 	 * @param titular
-	 * @param limite
 	 * @param saldo
-	 * @param valorLimite
 	 */
-	public Conta(Integer agencia, Integer conta, String titular, Double limite, Double saldo, Double valorLimite) {
+	public Conta(Integer agencia, Integer conta, String titular, Double saldo) {
 		super();
 		this.agencia = agencia;
 		this.conta = conta;
 		this.titular = titular;
-		this.limite = limite;
 		this.saldo = saldo;
-		this.valorLimite = valorLimite;
 	}
-
+	
 	/**
 	 * @param agencia
 	 * @param conta
 	 * @param titular
-	 * @param limite
-	 * @param valorLimite
 	 */
-	public Conta(Integer agencia, Integer conta, String titular, Double limite, Double valorLimite) {
+	public Conta(Integer agencia, Integer conta, String titular) {
 		super();
 		this.agencia = agencia;
 		this.conta = conta;
 		this.titular = titular;
-		this.limite = limite;
-		this.valorLimite = valorLimite;
 	}
 
 	/**
@@ -120,6 +112,15 @@ public abstract class Conta {
 	
 	public void depositar(Double valor) {
 		saldo += valor;
+	}
+
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		return "Conta [agencia=" + agencia + ", conta=" + conta + ", titular=" + titular + ", limite=" + limite
+				+ ", saldo=" + saldo + ", valorLimite=" + valorLimite + "]";
 	}
 	
 
