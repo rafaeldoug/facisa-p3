@@ -11,7 +11,6 @@ public final class ContaPoupanca extends Conta {
 	 */
 	public ContaPoupanca(Integer agencia, Integer conta, String titular, Double saldo, Double valorLimite) {
 		super(agencia, conta, titular, saldo, valorLimite);
-		// TODO Auto-generated constructor stub
 	}
 
 	/**
@@ -22,7 +21,6 @@ public final class ContaPoupanca extends Conta {
 	 */
 	public ContaPoupanca(Integer agencia, Integer conta, String titular, Double valorLimite) {
 		super(agencia, conta, titular, valorLimite);
-		// TODO Auto-generated constructor stub
 	}
 
 
