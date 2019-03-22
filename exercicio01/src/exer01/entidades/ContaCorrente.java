@@ -25,11 +25,5 @@ public final class ContaCorrente extends Conta {
 		// TODO Auto-generated constructor stub
 	}
 
-	@Override
-	public void setValorLimite(Double valor) {
-		
-	}
-
-
 	
 }

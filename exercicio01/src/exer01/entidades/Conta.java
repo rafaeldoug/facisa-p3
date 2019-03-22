@@ -99,8 +99,10 @@ public abstract class Conta {
 	 * @param valorLimite the valorLimite to set
 	 * @return 
 	 */
-	public abstract void setValorLimite();
-	
+	public void setValorLimite(Double valor) {
+		this.valorLimite = valor;
+	}
+		
 	/**
 	 * @return the saldo
 	 */
