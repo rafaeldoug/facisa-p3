@@ -14,25 +14,29 @@ public abstract class Conta {
 	 * @param conta
 	 * @param titular
 	 * @param saldo
+	 * @param valorLimite
 	 */
-	public Conta(Integer agencia, Integer conta, String titular, Double saldo) {
+	public Conta(Integer agencia, Integer conta, String titular, Double saldo, Double valorLimite) {
 		super();
 		this.agencia = agencia;
 		this.conta = conta;
 		this.titular = titular;
 		this.saldo = saldo;
+		this.valorLimite = valorLimite;
 	}
 	
 	/**
 	 * @param agencia
 	 * @param conta
 	 * @param titular
+	 * @param valorLimite
 	 */
-	public Conta(Integer agencia, Integer conta, String titular) {
+	public Conta(Integer agencia, Integer conta, String titular, Double valorLimite) {
 		super();
 		this.agencia = agencia;
 		this.conta = conta;
 		this.titular = titular;
+		this.valorLimite = valorLimite;
 	}
 
 	/**
@@ -95,9 +99,7 @@ public abstract class Conta {
 	 * @param valorLimite the valorLimite to set
 	 * @return 
 	 */
-	public void setValorLimite(Double valor) {
-		this.valorLimite = valor;
-	}
+	public abstract void setValorLimite();
 	
 	/**
 	 * @return the saldo
@@ -114,6 +116,7 @@ public abstract class Conta {
 		saldo += valor;
 	}
 
+	
 	/* (non-Javadoc)
 	 * @see java.lang.Object#toString()
 	 */

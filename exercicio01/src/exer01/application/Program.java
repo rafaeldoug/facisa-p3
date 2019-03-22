@@ -14,10 +14,12 @@ public class Program {
 		Locale.setDefault(Locale.US);
 		Scanner teclado = new Scanner(System.in);
 		
-		Conta cc = new ContaCorrente(1001, 11100, "Doug");
+		Conta cc = new ContaCorrente(1001, 11100, "Doug", 0.0);
 		System.out.println(cc);
 		cc.depositar(100.00);
+		cc.setValorLimite(200.0);
 		System.out.println(cc);
+		
 				
 		
 		
