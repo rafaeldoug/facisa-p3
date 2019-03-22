@@ -1,5 +1,6 @@
 package br.com.itau.taa;
 
+
 import br.com.itau.taa.exceptions.SaldoInsuficienteException;
 
 public class Conta {
@@ -91,7 +92,7 @@ public class Conta {
 	public void sacar(double montante) throws SaldoInsuficienteException {
 
 		if (montante > saldo) {
-			throw new SaldoInsuficienteException();
+			throw new SaldoInsuficienteException("Saldo insuficiente.\nSaldo atual: " + saldo);
 		} else {
 			saldo -= montante;
 		}

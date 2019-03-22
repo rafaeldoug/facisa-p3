@@ -13,7 +13,9 @@ public class Main {
 		try {
 			conta.sacar(45);
 		} catch (SaldoInsuficienteException e) {
-			JOptionPane.showMessageDialog(null, "Ei, " + conta.getTitular() + "!" + " TÁ LISO QUE NEM EU...");
+			e.printStackTrace();
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
 		
 		System.out.println(conta);
