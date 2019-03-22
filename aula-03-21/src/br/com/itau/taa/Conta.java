@@ -87,20 +87,9 @@ public class Conta {
 		return saldo;
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see java.lang.Object#toString()
-	 */
-	@Override
-	public String toString() {
-		return "Conta [numeroAgencia=" + numeroAgencia + ", numeroConta=" + numeroConta + ", saldo=" + saldo
-				+ ", titular=" + titular + "]";
-	}
-
 	// metodo repassado para quem chama o metodo e deve tratar
 	public void sacar(double montante) throws SaldoInsuficienteException {
-		
+
 		if (montante > saldo) {
 			throw new SaldoInsuficienteException();
 		} else {
@@ -111,6 +100,17 @@ public class Conta {
 	public void depositar(double montante) {
 		saldo += montante;
 
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		return "Conta [numeroAgencia=" + numeroAgencia + ", numeroConta=" + numeroConta + ", saldo=" + saldo
+				+ ", titular=" + titular + "]";
 	}
 
 }
