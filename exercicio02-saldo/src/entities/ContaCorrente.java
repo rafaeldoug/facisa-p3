@@ -51,11 +51,12 @@ public class ContaCorrente {
 
 	/**
 	 * @param valorLimite the valorLimite to set
+	 * @throws Exception 
 	 */
-	public void setValorLimite(Double valorLimite) {
+	public void setValorLimite(Double valorLimite) throws Exception {
 
 		if (valorLimite < 0) {
-			throw new IllegalArgumentException("Não é possível utilizar valores negativos.");
+			throw new Exception("Não é possível utilizar valores negativos.");
 		} else {
 			this.valorLimite = valorLimite;
 		}
@@ -68,10 +69,10 @@ public class ContaCorrente {
 		return saldo;
 	}
 
-	public void sacar(double valor) {
+	public void sacar(double valor) throws Exception {
 
 		if (valor < 0) {
-			throw new IllegalArgumentException("Não é possível utilizar valores negativos.");
+			throw new Exception("Não é possível utilizar valores negativos.");
 		}
 
 		else {
@@ -80,10 +81,10 @@ public class ContaCorrente {
 
 	}
 
-	public void depositar(double valor) {
+	public void depositar(double valor) throws Exception {
 
 		if (valor < 0) {
-			throw new IllegalArgumentException("Não é possível utilizar valores negativos.");
+			throw new Exception("Não é possível utilizar valores negativos.");
 		} else {
 			saldo += valor;
 		}

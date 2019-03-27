@@ -10,13 +10,13 @@ public class Program {
 
 		try {
 			cc.setValorLimite(-600.0);
-		} catch (IllegalArgumentException e) {
+		} catch (Exception e) {
 			System.out.println(e.getMessage());
 		}
 
 		try {
 			cc.depositar(-200.0);
-		} catch (IllegalArgumentException e) {
+		} catch (Exception e) {
 			System.out.println(e.getMessage());
 		}
 		
