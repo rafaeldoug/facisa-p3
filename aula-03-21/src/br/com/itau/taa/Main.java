@@ -7,7 +7,7 @@ public class Main {
 	public static void main(String[] args) {
 		
 		Conta conta = new Conta(1, 1, "Sebozo");
-		conta.depositar(50.0);
+		conta.depositar(10.0);
 		try {
 			conta.sacar(45);
 		} catch (SaldoInsuficienteException e) {
