@@ -1,7 +1,5 @@
 package br.com.itau.taa;
 
-import javax.swing.JOptionPane;
-
 import br.com.itau.taa.exceptions.SaldoInsuficienteException;
 
 public class Main {
