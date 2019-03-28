@@ -18,7 +18,7 @@ public class Program {
 
 		try {
 			util.toCelsius(util.getFahrenheit());
-			System.out.printf("Temperatura em °C: %.2f", util.getCelsius());
+			System.out.printf("Temperatura em °C: %.1f", util.getCelsius());
 		} catch (FahrenheitException e) {
 			System.out.println(e.getMessage());
 		}
