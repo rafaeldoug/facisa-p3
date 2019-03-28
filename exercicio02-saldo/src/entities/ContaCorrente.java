@@ -1,5 +1,7 @@
 package entities;
 
+import entities.exceptions.SaldoInsuficienteException;
+
 public class ContaCorrente {
 
 	private Double limite;
@@ -74,7 +76,9 @@ public class ContaCorrente {
 		if (valor < 0) {
 			throw new Exception("Não é possível utilizar valores negativos.");
 		}
-
+		if (valor > getSaldo()) {
+			throw new SaldoInsuficienteException("Saldo na conta insuficiente");
+		} 	
 		else {
 			saldo -= valor;
 		}
