@@ -5,7 +5,7 @@ import entities.exceptions.FahrenheitException;
 public class Utils {
 
 	private static final double ZERO_ABSOLUTO = -459.67;
-	
+
 	private Double fahrenheit;
 	private Double celsius;
 
@@ -39,7 +39,7 @@ public class Utils {
 
 	public void toCelsius(double fahrenheit) throws FahrenheitException {
 		this.celsius = (5 * (fahrenheit - 32)) / 9;
-		
+
 		if (celsius < ZERO_ABSOLUTO) {
 			throw new FahrenheitException("Erro: Abaixo de Zero Absoluto!");
 		}
