@@ -9,6 +9,14 @@ public class Utils {
 	private Double fahrenheit;
 	private Double celsius;
 
+	public double toCelsius(double fahrenheit) throws FahrenheitException {
+	
+		if (celsius < ZERO_ABSOLUTO) {
+			throw new FahrenheitException("Erro: Abaixo de Zero Absoluto!");
+		}
+		return (5 * (fahrenheit - 32)) / 9;
+	}
+
 	/**
 	 * @return the fahrenheit
 	 */
@@ -35,14 +43,6 @@ public class Utils {
 	 */
 	public void setCelsius(Double celsius) {
 		this.celsius = celsius;
-	}
-
-	public void toCelsius(double fahrenheit) throws FahrenheitException {
-		this.celsius = (5 * (fahrenheit - 32)) / 9;
-
-		if (celsius < ZERO_ABSOLUTO) {
-			throw new FahrenheitException("Erro: Abaixo de Zero Absoluto!");
-		}
 	}
 
 }
