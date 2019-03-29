@@ -7,7 +7,7 @@ public class ContaCorrente {
 	private Double limite;
 	private Double saldo;
 	private Double valorLimite;
-
+	
 	/**
 	 * @param Limite disponivel na conta
 	 * @param Saldo  disponivel na conta
@@ -30,13 +30,13 @@ public class ContaCorrente {
 		this.valorLimite = valorLimite;
 	}
 
-	public void sacar(double valor) throws Exception {
+	public void sacar(double valor) throws SaldoInsuficienteException {
 
 		if (valor < 0) {
 			throw new IllegalArgumentException("Não é possível utilizar valores negativos.");
 		}
 		if (valor > getSaldo()) {
-			throw new SaldoInsuficienteException("Saldo na conta insuficiente");
+			throw new SaldoInsuficienteException(getSaldo()); // parametro que retorna o saldo atual
 		} else {
 			saldo -= valor;
 		}
@@ -74,7 +74,7 @@ public class ContaCorrente {
 	}
 
 	/**
-	 * @param valorLimite the valorLimite to set
+	 * @param define valor maximo cedido pelo banco
 	 * @throws Exception
 	 */
 	public void setValorLimite(Double valorLimite) {
@@ -91,16 +91,6 @@ public class ContaCorrente {
 	 */
 	public Double getSaldo() {
 		return saldo;
-	}
-
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see java.lang.Object#toString()
-	 */
-	@Override
-	public String toString() {
-		return "ContaCorrente [limite=" + limite + ", saldo=" + saldo + ", valorLimite=" + valorLimite + "]";
 	}
 
 }
