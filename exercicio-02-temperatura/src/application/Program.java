@@ -11,16 +11,18 @@ public class Program {
 
 		Scanner sc = new Scanner(System.in);
 
-		Utils util = new Utils();
-
 		System.out.print("Digite a temperatura em °F: ");
-		util.setFahrenheit(sc.nextDouble());
+		double valor = sc.nextDouble();
+		
+		double celsius;
 
 		try {
-			util.toCelsius(util.getFahrenheit());
-			System.out.printf("Temperatura em °C: %.1f", util.getCelsius());
+			celsius = Utils.toCelsius(valor);
+			System.out.printf("Temperatura em °C: %.1f" , celsius);
 		} catch (FahrenheitException e) {
 			System.out.println(e.getMessage());
+		} finally {
+			System.out.println("\nPrograma finalizado!");
 		}
 
 		sc.close();
