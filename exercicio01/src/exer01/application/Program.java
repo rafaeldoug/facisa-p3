@@ -14,14 +14,17 @@ public class Program {
 		Locale.setDefault(Locale.US);
 		Scanner teclado = new Scanner(System.in);
 		
-		Conta cc = new ContaCorrente(1001, 11100, "Doug", 0.0);
+		Conta cc = new ContaCorrente(1,1,"Doug", 100.0);
+		System.out.println("Após contrutor:");
 		System.out.println(cc);
-		cc.depositar(100.00);
-		cc.setValorLimite(200.0);
+		cc.depositar(200);
+		System.out.println("Após método depositar:");
 		System.out.println(cc);
-		
+		cc.sacar(50);
+		System.out.println("Após método sacar (ContaCorrente):");
+		System.out.println(cc);
 	
-
+		teclado.close();
 	}
 
 }
