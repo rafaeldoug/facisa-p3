@@ -1,7 +1,7 @@
 package exer01.entidades;
 
 public final class ContaCorrente extends Conta {
-	
+
 	/**
 	 * @param agencia
 	 * @param conta
@@ -23,5 +23,18 @@ public final class ContaCorrente extends Conta {
 		super(agencia, conta, titular, valorLimite);
 	}
 
-	
+	/**
+	 * Metodo para retirada de montante, alterando o saldo e descontando tributo
+	 */
+	@Override
+	public void sacar(double montante) {
+		saldo -= montante;
+		saldo -= getTributavel();
+	}
+
+	@Override
+	public double getTributavel() {
+		return TRIBUTO_CC;
+	}
+
 }

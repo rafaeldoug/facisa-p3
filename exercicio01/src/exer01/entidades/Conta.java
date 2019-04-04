@@ -1,14 +1,14 @@
 package exer01.entidades;
 
-public abstract class Conta {
-	
-	private Integer agencia;
-	private Integer conta;
+public abstract class Conta implements Tributavel {
+
+	private int agencia;
+	private int conta;
 	private String titular;
-	private Double limite;
-	private Double saldo = 0.0;
-	private Double valorLimite;
-	
+	private double limite;
+	protected double saldo;
+	private double valorLimite;
+
 	/**
 	 * @param agencia
 	 * @param conta
@@ -17,14 +17,13 @@ public abstract class Conta {
 	 * @param valorLimite
 	 */
 	public Conta(Integer agencia, Integer conta, String titular, Double saldo, Double valorLimite) {
-		super();
 		this.agencia = agencia;
 		this.conta = conta;
 		this.titular = titular;
 		this.saldo = saldo;
 		this.valorLimite = valorLimite;
 	}
-	
+
 	/**
 	 * @param agencia
 	 * @param conta
@@ -32,102 +31,132 @@ public abstract class Conta {
 	 * @param valorLimite
 	 */
 	public Conta(Integer agencia, Integer conta, String titular, Double valorLimite) {
-		super();
 		this.agencia = agencia;
 		this.conta = conta;
 		this.titular = titular;
 		this.valorLimite = valorLimite;
 	}
+	
+	/**
+	 * Sacar montante afetando saldo
+	 * 
+	 * @param montante
+	 */
+	public abstract void sacar(double montante);
+	
+	/**
+	 * Depositar montante afetanto o saldo
+	 * 
+	 * @param montante
+	 */
+	public void depositar(double montante) {
+		saldo += montante;
+	}
+	
 
 	/**
-	 * @return the agencia
+	 * Obtem a variavel agencia
+	 *
+	 * @return a variavel agencia
 	 */
 	public Integer getAgencia() {
 		return agencia;
 	}
 
 	/**
-	 * @param agencia the agencia to set
+	 * Ajusta a variavel agencia
+	 *
+	 * @param agencia a variavel agencia a ser ajustada
 	 */
 	public void setAgencia(Integer agencia) {
 		this.agencia = agencia;
 	}
 
 	/**
-	 * @return the conta
+	 * Obtem a variavel conta
+	 *
+	 * @return a variavel conta
 	 */
 	public Integer getConta() {
 		return conta;
 	}
 
 	/**
-	 * @param conta the conta to set
+	 * Ajusta a variavel conta
+	 *
+	 * @param conta a variavel conta a ser ajustada
 	 */
 	public void setConta(Integer conta) {
 		this.conta = conta;
 	}
 
 	/**
-	 * @return the titular
+	 * Obtem a variavel titular
+	 *
+	 * @return a variavel titular
 	 */
 	public String getTitular() {
 		return titular;
 	}
 
 	/**
-	 * @param titular the titular to set
+	 * Ajusta a variavel titular
+	 *
+	 * @param titular a variavel titular a ser ajustada
 	 */
 	public void setTitular(String titular) {
 		this.titular = titular;
 	}
 
 	/**
-	 * @return the limite
+	 * Obtem a variavel limite
+	 *
+	 * @return a variavel limite
 	 */
 	public Double getLimite() {
 		return limite;
 	}
 
 	/**
-	 * @return the valorLimite
+	 * Ajusta a variavel limite
+	 *
+	 * @param limite a variavel limite a ser ajustada
+	 */
+	public void setLimite(Double limite) {
+		this.limite = limite;
+	}
+
+	/**
+	 * Obtem a variavel valorLimite
+	 *
+	 * @return a variavel valorLimite
 	 */
 	public Double getValorLimite() {
 		return valorLimite;
 	}
 
 	/**
-	 * @param valorLimite the valorLimite to set
-	 * @return 
+	 * Ajusta a variavel valorLimite
+	 *
+	 * @param valorLimite a variavel valorLimite a ser ajustada
 	 */
-	public void setValorLimite(Double valor) {
-		this.valorLimite = valor;
+	public void setValorLimite(Double valorLimite) {
+		this.valorLimite = valorLimite;
 	}
-		
+
 	/**
-	 * @return the saldo
+	 * Obtem a variavel saldo
+	 *
+	 * @return a variavel saldo
 	 */
 	public Double getSaldo() {
 		return saldo;
 	}
-	
-	public void sacar(Double valor) {
-		saldo -= valor;
-	}
-	
-	public void depositar(Double valor) {
-		saldo += valor;
-	}
 
-	
-	/* (non-Javadoc)
-	 * @see java.lang.Object#toString()
-	 */
 	@Override
 	public String toString() {
 		return "Conta [agencia=" + agencia + ", conta=" + conta + ", titular=" + titular + ", limite=" + limite
 				+ ", saldo=" + saldo + ", valorLimite=" + valorLimite + "]";
 	}
-	
-
 
 }

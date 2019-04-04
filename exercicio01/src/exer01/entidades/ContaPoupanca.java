@@ -23,6 +23,16 @@ public final class ContaPoupanca extends Conta {
 		super(agencia, conta, titular, valorLimite);
 	}
 
+	@Override
+	public double getTributavel() {
+		return TRIBUTO_CP;
+	}
+
+	@Override
+	public void sacar(double montante) {
+		saldo -= montante;
+	}
+
 
 	
 
