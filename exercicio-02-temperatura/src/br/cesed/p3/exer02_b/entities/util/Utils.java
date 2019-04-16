@@ -1,6 +1,6 @@
-package entities.util;
+package br.cesed.p3.exer02_b.entities.util;
 
-import entities.exceptions.FahrenheitException;
+import br.cesed.p3.exer02_b.entities.exceptions.FahrenheitException;
 
 public class Utils {
 

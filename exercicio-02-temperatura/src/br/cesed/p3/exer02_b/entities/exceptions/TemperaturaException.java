@@ -1,4 +1,4 @@
-package entities.exceptions;
+package br.cesed.p3.exer02_b.entities.exceptions;
 
 public class TemperaturaException extends Exception {
 

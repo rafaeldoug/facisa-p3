@@ -1,7 +1,7 @@
 /**
  * 
  */
-package tests;
+package br.cesed.p3.exer02_b.tests;
 
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;

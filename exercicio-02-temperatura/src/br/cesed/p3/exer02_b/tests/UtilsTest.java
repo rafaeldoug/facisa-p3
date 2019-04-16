@@ -1,7 +1,7 @@
 /**
  * 
  */
-package tests;
+package br.cesed.p3.exer02_b.tests;
 
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.AfterEach;
@@ -10,8 +10,8 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import entities.exceptions.FahrenheitException;
-import entities.util.Utils;
+import br.cesed.p3.exer02_b.entities.exceptions.FahrenheitException;
+import br.cesed.p3.exer02_b.entities.util.Utils;
 
 /**
  * @author Rafael Nascimento

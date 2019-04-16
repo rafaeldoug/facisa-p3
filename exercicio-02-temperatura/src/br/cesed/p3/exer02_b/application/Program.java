@@ -1,9 +1,9 @@
-package application;
+package br.cesed.p3.exer02_b.application;
 
 import java.util.Scanner;
 
-import entities.exceptions.FahrenheitException;
-import entities.util.Utils;
+import br.cesed.p3.exer02_b.entities.exceptions.FahrenheitException;
+import br.cesed.p3.exer02_b.entities.util.Utils;
 
 public class Program {
 
