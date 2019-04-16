@@ -1,6 +1,6 @@
-package entities;
+package br.cesed.p3.exer02.entities;
 
-import entities.exceptions.SaldoInsuficienteException;
+import br.cesed.p3.exer02.entities.exceptions.SaldoInsuficienteException;
 
 public class ContaCorrente {
 

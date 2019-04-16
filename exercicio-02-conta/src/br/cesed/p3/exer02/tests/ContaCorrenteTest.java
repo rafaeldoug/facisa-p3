@@ -1,7 +1,7 @@
 /**
  * 
  */
-package tests;
+package br.cesed.p3.exer02.tests;
 
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.AfterEach;
@@ -10,8 +10,8 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import entities.ContaCorrente;
-import entities.exceptions.SaldoInsuficienteException;
+import br.cesed.p3.exer02.entities.ContaCorrente;
+import br.cesed.p3.exer02.entities.exceptions.SaldoInsuficienteException;
 
 /**
  * @author Rafael Nascimento

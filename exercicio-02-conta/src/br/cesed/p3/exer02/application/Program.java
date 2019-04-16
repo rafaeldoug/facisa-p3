@@ -1,7 +1,7 @@
-package application;
+package br.cesed.p3.exer02.application;
 
-import entities.ContaCorrente;
-import entities.exceptions.SaldoInsuficienteException;
+import br.cesed.p3.exer02.entities.ContaCorrente;
+import br.cesed.p3.exer02.entities.exceptions.SaldoInsuficienteException;
 
 public class Program {
 

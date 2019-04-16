@@ -1,4 +1,4 @@
-package entities.exceptions;
+package br.cesed.p3.exer02.entities.exceptions;
 
 public class SaldoInsuficienteException extends Exception {
 
