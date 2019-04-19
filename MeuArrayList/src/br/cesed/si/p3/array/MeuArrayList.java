@@ -22,9 +22,9 @@ public class MeuArrayList {
 	}
 
 	/**
-	 * Adciona novo elemento após último da lista
+	 * Adciona novo elemento apos ultimo da lista
 	 * 
-	 * @param object Elemento a ser adicionado à lista
+	 * @param object Elemento a ser adicionado na lista
 	 */
 	public void add(Object object) {
 
@@ -41,9 +41,9 @@ public class MeuArrayList {
 	}
 
 	/**
-	 * Adciona novo elemento na posição indicada
+	 * Adciona novo elemento na posicao indicada
 	 * 
-	 * @param index  Indica a posição onde o elemento vai ser adicionado
+	 * @param index  Indica a posicao onde o elemento vai ser adicionado
 	 * @param object Objeto a ser adicionado
 	 */
 	public void addIndex(int index, Object object) {
@@ -62,7 +62,7 @@ public class MeuArrayList {
 			meuArray = novoArray;
 		}
 
-		for (int i = meuArray.length - 1; i > index; i--) {
+		for (int i = elementos; i > index; i--) {
 			meuArray[i] = meuArray[i - 1];
 		}
 
@@ -73,7 +73,7 @@ public class MeuArrayList {
 	/**
 	 * Remove elementos da lista utilizando o index
 	 * 
-	 * @param index Indica a posição do elemento a ser removido
+	 * @param index Indica a posicao do elemento a ser removido
 	 */
 	public void remove(int index) {
 
@@ -96,7 +96,7 @@ public class MeuArrayList {
 	/**
 	 * Retorna o elementos da lista referente ao index
 	 * 
-	 * @param index Indica a posição do elemento a ser retornado
+	 * @param index Indica a posicao do elemento a ser retornado
 	 * @return Retorna o valor referente ao index indicado
 	 */
 	public Object getElementoIndex(int index) {
@@ -112,7 +112,7 @@ public class MeuArrayList {
 	/**
 	 * Altera o valor do elemento na lista
 	 * 
-	 * @param index  Indica a posição do elemento a ser alterado
+	 * @param index  Indica a posicao do elemento a ser alterado
 	 * @param objeto Novo valor do elemento
 	 */
 	public void setElementoIndex(int index, Object objeto) {
