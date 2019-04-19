@@ -7,6 +7,7 @@ import java.util.Arrays;
 
 /**
  * @author Rafael Nascimento
+ * @see <a href="https://github.com/rafaeldoug/facisa-p3/tree/master/MeuArrayList">Github</a>
  *
  */
 
@@ -138,7 +139,6 @@ public class MeuArrayList {
 	 * Limpa a lista atual
 	 */
 	public void clear() {
-
 		// apaga a lista atual criando uma nova com o tamanho inicial
 		meuArray = new Object[TAMANHO_INICIAL];
 		this.elementos = 0;
@@ -146,7 +146,9 @@ public class MeuArrayList {
 
 	@Override
 	public String toString() {
-		return "MeuArrayList [meuArray=" + Arrays.toString(meuArray) + ", elementos=" + elementos + "]";
+		return "MeuArrayList: \n"
+				+ "[meuArray = " + Arrays.toString(meuArray) + ",\n"
+				+ "qtd. de elementos = " + elementos + "]";
 	}
 
 }

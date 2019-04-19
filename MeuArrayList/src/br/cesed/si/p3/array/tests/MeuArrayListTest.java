@@ -5,10 +5,8 @@ package br.cesed.si.p3.array.tests;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -16,37 +14,37 @@ import br.cesed.si.p3.array.MeuArrayList;
 
 /**
  * @author Rafael Nascimento
+ * @see <a href="https://github.com/rafaeldoug/facisa-p3/tree/master/MeuArrayList/src/br/cesed/si/p3/array/tests">Github</a>
  *
  */
+
 class MeuArrayListTest {
 
-	/**
-	 * @throws java.lang.Exception
-	 */
-	@BeforeAll
-	static void setUpBeforeClass() throws Exception {
-	}
+	private MeuArrayList meuArray; // variavel global para os teste
 
 	/**
-	 * @throws java.lang.Exception
-	 */
-	@AfterAll
-	static void tearDownAfterClass() throws Exception {
-	}
-
-	/**
+	 * Cria a lista vazia antes da execução de cada teste
+	 * 
 	 * @throws java.lang.Exception
 	 */
 	@BeforeEach
 	void setUp() throws Exception {
 
+		/* Cenário */
+
+		this.meuArray = new MeuArrayList();
+		assertEquals(meuArray.size(), 0);
+
 	}
 
 	/**
+	 * Limpa a lista depois da execução de cada teste
+	 * 
 	 * @throws java.lang.Exception
 	 */
 	@AfterEach
 	void tearDown() throws Exception {
+		meuArray.clear();
 	}
 
 	/**
@@ -54,11 +52,6 @@ class MeuArrayListTest {
 	 */
 	@Test
 	void testAdd1() {
-
-		/* Cenário */
-
-		MeuArrayList meuArray = new MeuArrayList();
-		assertEquals(meuArray.size(), 0);
 
 		/* Execução */
 
@@ -76,11 +69,6 @@ class MeuArrayListTest {
 	 */
 	@Test
 	void testAdd2() {
-
-		/* Cenário */
-
-		MeuArrayList meuArray = new MeuArrayList();
-		assertEquals(meuArray.size(), 0);
 
 		/* Execução */
 
@@ -101,9 +89,6 @@ class MeuArrayListTest {
 	void testAddIndex1() {
 
 		/* Cenário */
-
-		MeuArrayList meuArray = new MeuArrayList();
-		assertEquals(meuArray.size(), 0);
 
 		meuArray.add(10);
 		meuArray.add(11);
@@ -133,9 +118,6 @@ class MeuArrayListTest {
 
 		/* Cenário */
 
-		MeuArrayList meuArray = new MeuArrayList();
-		assertEquals(meuArray.size(), 0);
-
 		meuArray.add(10);
 		meuArray.add(11);
 		meuArray.add(12);
@@ -160,9 +142,6 @@ class MeuArrayListTest {
 	void testAddIndex3() {
 
 		/* Cenário */
-
-		MeuArrayList meuArray = new MeuArrayList();
-		assertEquals(meuArray.size(), 0);
 
 		meuArray.add(10);
 		meuArray.add(11);
@@ -191,9 +170,6 @@ class MeuArrayListTest {
 
 		/* Cenário */
 
-		MeuArrayList meuArray = new MeuArrayList();
-		assertEquals(meuArray.size(), 0);
-
 		meuArray.add(10);
 		meuArray.add(11);
 		meuArray.add(12);
@@ -218,9 +194,6 @@ class MeuArrayListTest {
 
 		/* Cenário */
 
-		MeuArrayList meuArray = new MeuArrayList();
-		assertEquals(meuArray.size(), 0);
-
 		meuArray.add(10);
 		meuArray.add(20);
 
@@ -242,9 +215,6 @@ class MeuArrayListTest {
 	void testAddIndexException2() {
 
 		/* Cenário */
-
-		MeuArrayList meuArray = new MeuArrayList();
-		assertEquals(meuArray.size(), 0);
 
 		meuArray.add(10);
 		meuArray.add(20);
@@ -269,9 +239,6 @@ class MeuArrayListTest {
 
 		/* Cenário */
 
-		MeuArrayList meuArray = new MeuArrayList();
-		assertEquals(meuArray.size(), 0);
-
 		meuArray.add(10);
 		meuArray.add(20);
 
@@ -294,9 +261,6 @@ class MeuArrayListTest {
 
 		/* Cenário */
 
-		MeuArrayList meuArray = new MeuArrayList();
-		assertEquals(meuArray.size(), 0);
-
 		meuArray.add(10);
 		meuArray.add(20);
 
@@ -317,9 +281,6 @@ class MeuArrayListTest {
 	void testRemoveException2() {
 
 		/* Cenário */
-
-		MeuArrayList meuArray = new MeuArrayList();
-		assertEquals(meuArray.size(), 0);
 
 		meuArray.add(10);
 		meuArray.add(20);
@@ -343,20 +304,40 @@ class MeuArrayListTest {
 
 		/* Cenário */
 
-		MeuArrayList meuArray = new MeuArrayList();
-		assertEquals(meuArray.size(), 0);
-
-		int elemento1 = 10;
-		int elemento2 = 20;
-
-		meuArray.add(elemento1);
-		meuArray.add(elemento2);
+		meuArray.add(10);
+		meuArray.add(20);
 
 		/* Verificação */
 
-		int index = 1; // indice referente ao elemento2
+		int index = 1; // indice referente ao valor 20
 
-		assertEquals(meuArray.getElementoIndex(index), elemento2);
+		assertEquals(meuArray.getElementoIndex(index), 20);
+	}
+
+	/**
+	 * Teste de retorno iteravel
+	 */
+
+	@Test
+	void testGetElemento2() {
+
+		/* Cenário */
+
+		meuArray.add(1);
+		meuArray.add(2);
+		meuArray.add(3);
+		meuArray.add(4);
+		meuArray.add(5);
+		meuArray.add(6);
+
+		/* Verificação */
+		int valorElemento = 1; // representa o primeiro valor adicionado na lista
+		for (int i = 0; i < meuArray.size(); i++) {
+			meuArray.getElementoIndex(i);
+			assertEquals(meuArray.getElementoIndex(i), valorElemento);
+			valorElemento++; // incrementa para o proximo valor sequencial de teste na lista
+		}
+
 	}
 
 	/**
@@ -366,9 +347,6 @@ class MeuArrayListTest {
 	void testGetElementoException1() {
 
 		/* Cenário */
-
-		MeuArrayList meuArray = new MeuArrayList();
-		assertEquals(meuArray.size(), 0);
 
 		meuArray.add(10);
 		meuArray.add(20);
@@ -390,9 +368,6 @@ class MeuArrayListTest {
 
 		/* Cenário */
 
-		MeuArrayList meuArray = new MeuArrayList();
-		assertEquals(meuArray.size(), 0);
-
 		meuArray.add(10);
 		meuArray.add(20);
 
@@ -413,9 +388,6 @@ class MeuArrayListTest {
 	void testSetElemento1() {
 
 		/* Cenário */
-
-		MeuArrayList meuArray = new MeuArrayList();
-		assertEquals(meuArray.size(), 0);
 
 		meuArray.add(10);
 		meuArray.add(20);
@@ -439,9 +411,6 @@ class MeuArrayListTest {
 
 		/* Cenário */
 
-		MeuArrayList meuArray = new MeuArrayList();
-		assertEquals(meuArray.size(), 0);
-
 		meuArray.add(10);
 		meuArray.add(20);
 
@@ -463,9 +432,6 @@ class MeuArrayListTest {
 
 		/* Cenário */
 
-		MeuArrayList meuArray = new MeuArrayList();
-		assertEquals(meuArray.size(), 0);
-
 		meuArray.add(10);
 		meuArray.add(20);
 
@@ -485,9 +451,6 @@ class MeuArrayListTest {
 	void testClear1() {
 
 		/* Cenário */
-
-		MeuArrayList meuArray = new MeuArrayList();
-		assertEquals(meuArray.size(), 0);
 
 		meuArray.add(10);
 		meuArray.add(20);
