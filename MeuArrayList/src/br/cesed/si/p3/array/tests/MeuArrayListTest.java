@@ -50,7 +50,7 @@ class MeuArrayListTest {
 	}
 
 	/**
-	 * Teste de adição de elemento com tamanho de lista
+	 * Teste de adicao de elemento com tamanho de lista
 	 */
 	@Test
 	void testAdd1() {
@@ -72,7 +72,7 @@ class MeuArrayListTest {
 	}
 
 	/**
-	 * Teste de adição de elemento com valor mesmo
+	 * Teste de adicao de elemento com valor mesmo
 	 */
 	@Test
 	void testAdd2() {
@@ -95,7 +95,7 @@ class MeuArrayListTest {
 	}
 
 	/**
-	 * Teste de adição de elemento no index indicado, verificando tamanho do array
+	 * Teste de adicao de elemento no index indicado, verificando tamanho do array
 	 */
 	@Test
 	void testAddIndex1() {
@@ -125,7 +125,7 @@ class MeuArrayListTest {
 	}
 
 	/**
-	 * Teste de adição de elemento no index indicado, verificando valor do elemento
+	 * Teste de adicao de elemento no index indicado, verificando valor do elemento
 	 * adicionado
 	 */
 	@Test
@@ -154,6 +154,63 @@ class MeuArrayListTest {
 	}
 
 	/**
+	 * Teste de adicao de elemento no index final da lista e quantidade de elementos
+	 */
+	@Test
+	void testAddIndex3() {
+
+		/* Cenário */
+
+		MeuArrayList meuArray = new MeuArrayList();
+		assertEquals(meuArray.size(), 0);
+
+		meuArray.add(10);
+		meuArray.add(11);
+		meuArray.add(12);
+
+		/* Execução */
+
+		int index = 2;
+		int elemento = 20;
+
+		meuArray.addIndex(index, elemento);
+
+		/* Verificação */
+
+		int tamanhoArray = 4;
+		assertEquals(meuArray.size(), tamanhoArray);
+
+	}
+
+	/**
+	 * Teste de adicao de elemento no index final da lista e valor do elemento
+	 * adicionado
+	 */
+	@Test
+	void testAddIndex4() {
+
+		/* Cenário */
+
+		MeuArrayList meuArray = new MeuArrayList();
+		assertEquals(meuArray.size(), 0);
+
+		meuArray.add(10);
+		meuArray.add(11);
+		meuArray.add(12);
+
+		/* Execução */
+
+		int index = 2;
+		int elemento = 20;
+		meuArray.addIndex(index, elemento);
+
+		/* Verificação */
+
+		assertEquals(meuArray.getElementoIndex(index), 20);
+
+	}
+
+	/**
 	 * Teste de Exception na remoção com index fora da lista
 	 */
 	@Test
@@ -171,7 +228,7 @@ class MeuArrayListTest {
 
 		int index = 3;
 		int elemento = 30;
-		
+
 		Assertions.assertThrows(ArrayIndexOutOfBoundsException.class, () -> {
 			meuArray.addIndex(index, elemento);
 		});
@@ -193,7 +250,7 @@ class MeuArrayListTest {
 		meuArray.add(20);
 
 		/* Verificação */
-		
+
 		int index = -1;
 		int elemento = 30;
 
@@ -269,8 +326,8 @@ class MeuArrayListTest {
 
 		/* Verificação */
 
-		int index =  -1;
-		
+		int index = -1;
+
 		Assertions.assertThrows(NumberFormatException.class, () -> {
 			meuArray.remove(index);
 		});
@@ -288,7 +345,7 @@ class MeuArrayListTest {
 
 		MeuArrayList meuArray = new MeuArrayList();
 		assertEquals(meuArray.size(), 0);
-		
+
 		int elemento1 = 10;
 		int elemento2 = 20;
 
@@ -296,7 +353,7 @@ class MeuArrayListTest {
 		meuArray.add(elemento2);
 
 		/* Verificação */
-		
+
 		int index = 1; // indice referente ao elemento2
 
 		assertEquals(meuArray.getElementoIndex(index), elemento2);
@@ -342,7 +399,7 @@ class MeuArrayListTest {
 		/* Verificação */
 
 		int index = -1;
-		
+
 		Assertions.assertThrows(NumberFormatException.class, () -> {
 			meuArray.getElementoIndex(index);
 		});
@@ -364,7 +421,7 @@ class MeuArrayListTest {
 		meuArray.add(20);
 
 		/* Execução */
-		
+
 		int index = 1;
 		int elemento = 30;
 		meuArray.setElementoIndex(index, elemento);
@@ -391,7 +448,7 @@ class MeuArrayListTest {
 		/* Verificação */
 
 		int index = 3;
-		
+
 		Assertions.assertThrows(ArrayIndexOutOfBoundsException.class, () -> {
 			meuArray.getElementoIndex(index);
 		});
