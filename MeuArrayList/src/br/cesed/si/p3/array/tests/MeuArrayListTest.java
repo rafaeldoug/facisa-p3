@@ -5,6 +5,7 @@ package br.cesed.si.p3.array.tests;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+import org.hamcrest.core.Is;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
@@ -66,7 +67,8 @@ class MeuArrayListTest {
 
 		/* Verificação */
 
-		assertEquals(1, meuArray.size());
+		int tamanhoArray = 1;
+		assertEquals(meuArray.size(), tamanhoArray);
 
 	}
 
@@ -89,7 +91,7 @@ class MeuArrayListTest {
 
 		/* Verificação */
 
-		assertEquals(10, meuArray.getElementoIndex(0));
+		assertEquals(meuArray.getElementoIndex(0), 10);
 
 	}
 
@@ -118,8 +120,8 @@ class MeuArrayListTest {
 
 		/* Verificação */
 
-		int tamanhoArrayEsperado = 5;
-		assertEquals(tamanhoArrayEsperado, meuArray.size());
+		int tamanhoArray = 5;
+		assertEquals(meuArray.size(), tamanhoArray);
 
 	}
 
@@ -148,7 +150,7 @@ class MeuArrayListTest {
 
 		/* Verificação */
 
-		assertEquals(20, meuArray.getElementoIndex(index));
+		assertEquals(meuArray.getElementoIndex(index), 20);
 
 	}
 
@@ -223,7 +225,8 @@ class MeuArrayListTest {
 
 		/* Verificação */
 
-		assertEquals(1, meuArray.size());
+		int tamanhoArray = 1;
+		assertEquals(meuArray.size(), tamanhoArray);
 
 	}
 
@@ -286,17 +289,18 @@ class MeuArrayListTest {
 
 		MeuArrayList meuArray = new MeuArrayList();
 		assertEquals(meuArray.size(), 0);
+		
+		int elemento1 = 10;
+		int elemento2 = 20;
 
-		meuArray.add(10);
-		meuArray.add(20);
-
-		/* Execução */
-
-		int actual = (int) meuArray.getElementoIndex(1);
+		meuArray.add(elemento1);
+		meuArray.add(elemento2);
 
 		/* Verificação */
+		
+		int index = 1; // indice referente ao elemento2
 
-		assertEquals(20, actual);
+		assertEquals(meuArray.getElementoIndex(index), elemento2);
 	}
 
 	/**
@@ -368,7 +372,7 @@ class MeuArrayListTest {
 
 		/* Verificação */
 
-		assertEquals(elemento, meuArray.getElementoIndex(1));
+		assertEquals(meuArray.getElementoIndex(index), elemento);
 	}
 
 	/**
@@ -441,7 +445,8 @@ class MeuArrayListTest {
 
 		/* Verificação */
 
-		assertEquals(0, meuArray.size());
+		int tamanhoArray = 0;
+		assertEquals(meuArray.size(), tamanhoArray);
 	}
 
 }
