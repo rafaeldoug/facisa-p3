@@ -5,7 +5,6 @@ package br.cesed.si.p3.array.tests;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import org.hamcrest.core.Is;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
