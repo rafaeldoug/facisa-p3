@@ -7,7 +7,8 @@ import java.util.Arrays;
 
 /**
  * @author Rafael Nascimento
- * @see <a href="https://github.com/rafaeldoug/facisa-p3/tree/master/MeuArrayList">Github</a>
+ * @see <a href=
+ *      "https://github.com/rafaeldoug/facisa-p3/tree/master/MeuArrayList">Github</a>
  *
  */
 
@@ -36,9 +37,11 @@ public class MeuArrayList {
 			}
 			meuArray = novoArray;
 		}
-
-		meuArray[elementos] = object;
-		elementos++;
+		
+		if (object != null) {
+			meuArray[elementos] = object;
+			elementos++;
+		}	
 	}
 
 	/**
@@ -50,7 +53,7 @@ public class MeuArrayList {
 	public void addIndex(int index, Object object) {
 
 		if (index >= elementos) {
-			throw new ArrayIndexOutOfBoundsException();
+			throw new IndexOutOfBoundsException();
 		} else if (index < 0) {
 			throw new NumberFormatException();
 		}
@@ -66,9 +69,11 @@ public class MeuArrayList {
 		for (int i = elementos; i > index; i--) {
 			meuArray[i] = meuArray[i - 1];
 		}
-
-		meuArray[index] = object;
-		elementos++;
+		
+		if (object != null) {
+			meuArray[index] = object;
+			elementos++;
+		}	
 	}
 
 	/**
@@ -79,7 +84,7 @@ public class MeuArrayList {
 	public void remove(int index) {
 
 		if (index >= elementos) {
-			throw new ArrayIndexOutOfBoundsException();
+			throw new IndexOutOfBoundsException();
 		} else if (index < 0) {
 			throw new NumberFormatException();
 		}
@@ -100,14 +105,38 @@ public class MeuArrayList {
 	 * @param index Indica a posicao do elemento a ser retornado
 	 * @return Retorna o valor referente ao index indicado
 	 */
-	public Object getElementoIndex(int index) {
+	public Object getElemento(int index) {
 
 		if (index >= elementos) {
-			throw new ArrayIndexOutOfBoundsException();
+			throw new IndexOutOfBoundsException();
 		} else if (index < 0) {
 			throw new NumberFormatException();
 		}
 		return meuArray[index];
+	}
+
+	/**
+	 * Retorna o index do elemento desejado
+	 * 
+	 * @param object Elemento que busca o index
+	 * @return Retorna o index do elemtno escolhido
+	 * @throws Exception
+	 */
+	public Object getElementoIndex(Object object) throws Exception {
+
+		int index = 0;
+		boolean achou = false;
+
+		for (int i = index; i < elementos; i++) {
+			if (meuArray[i].equals(object)) {
+				achou = true;
+				index = i;
+			}
+		}
+		if (achou == false) {
+			throw new Exception("Elemento não encontrado");
+		}
+		return index;
 	}
 
 	/**
@@ -116,14 +145,27 @@ public class MeuArrayList {
 	 * @param index  Indica a posicao do elemento a ser alterado
 	 * @param objeto Novo valor do elemento
 	 */
-	public void setElementoIndex(int index, Object objeto) {
+	public void setElemento(int index, Object objeto) {
 
 		if (index >= elementos) {
-			throw new ArrayIndexOutOfBoundsException();
+			throw new IndexOutOfBoundsException();
 		} else if (index < 0) {
 			throw new NumberFormatException();
 		}
-		meuArray[index] = objeto;
+		
+		if (objeto != null) {
+			meuArray[index] = objeto;
+		}
+	}
+
+	/**
+	 * Retorna true se a lista esta vazia e false se lista possua qualquer elemento
+	 * 
+	 * @return
+	 */
+	public boolean isEmpty() {
+
+		return elementos == 0;
 	}
 
 	/**
@@ -145,10 +187,34 @@ public class MeuArrayList {
 	}
 
 	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + elementos;
+		result = prime * result + Arrays.deepHashCode(meuArray);
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		MeuArrayList other = (MeuArrayList) obj;
+		if (elementos != other.elementos)
+			return false;
+		if (!Arrays.deepEquals(meuArray, other.meuArray))
+			return false;
+		return true;
+	}
+
+	@Override
 	public String toString() {
-		return "MeuArrayList: \n"
-				+ "[meuArray = " + Arrays.toString(meuArray) + ",\n"
-				+ "qtd. de elementos = " + elementos + "]";
+		return "MeuArrayList: \n" + "[meuArray = " + Arrays.toString(meuArray) + ",\n" + "qtd. de elementos = "
+				+ elementos + "]";
 	}
 
 }
