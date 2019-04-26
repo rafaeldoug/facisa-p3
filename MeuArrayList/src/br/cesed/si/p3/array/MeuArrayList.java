@@ -18,9 +18,11 @@ public class MeuArrayList {
 
 	private Object[] meuArray;
 	private int elementos; // numero de elementos na lista
+	private int capacidadeLista;
 
 	public MeuArrayList() {
 		this.meuArray = new Object[TAMANHO_INICIAL]; // lista vazia iniciada
+		this.capacidadeLista = TAMANHO_INICIAL;
 	}
 
 	/**
@@ -30,13 +32,7 @@ public class MeuArrayList {
 	 */
 	public void add(Object object) {
 
-		if (elementos == meuArray.length) {
-			Object[] novoArray = new Object[meuArray.length + TAMANHO_INICIAL];
-			for (int i = 0; i < elementos; i++) {
-				novoArray[i] = meuArray[i];
-			}
-			meuArray = novoArray;
-		}
+		this.limiteArray();
 
 		if (elementos != 0 && object != null) {
 			if (meuArray[0].getClass() != object.getClass()) {
@@ -64,13 +60,7 @@ public class MeuArrayList {
 			throw new NumberFormatException();
 		}
 
-		if (elementos == meuArray.length) {
-			Object[] novoArray = new Object[meuArray.length + TAMANHO_INICIAL];
-			for (int i = 0; i < elementos; i++) {
-				novoArray[i] = meuArray[i];
-			}
-			meuArray = novoArray;
-		}
+		this.limiteArray();
 
 		if (elementos != 0) {
 			if (meuArray[0].getClass() != object.getClass()) {
@@ -84,6 +74,30 @@ public class MeuArrayList {
 
 		if (object != null) {
 			meuArray[index] = object;
+			elementos++;
+		}
+	}
+
+	/**
+	 * Concatena outra lista no fim da lista atual
+	 * 
+	 * @param object Objeto lista a ser concatenado
+	 */
+	public void addAll(Object[] object) {
+
+		this.limiteArray();
+
+		if (elementos != 0) {
+			if (meuArray[0].getClass() != object[0].getClass()) {
+				throw new IllegalArgumentException("Adicione apenas objetos do mesmo tipo");
+			}
+		}
+
+		int tamanhoAtual = elementos;
+		for (int i = 0; i < object.length; i++) {
+			this.limiteArray();
+			meuArray[tamanhoAtual] = object[i];
+			tamanhoAtual++;
 			elementos++;
 		}
 	}
@@ -112,7 +126,7 @@ public class MeuArrayList {
 	}
 
 	/**
-	 * Retorna o elementos da lista referente ao index
+	 * Retorna o elementos da lista referente ao index desejado
 	 * 
 	 * @param index Indica a posicao do elemento a ser retornado
 	 * @return Retorna o valor referente ao index indicado
@@ -128,25 +142,38 @@ public class MeuArrayList {
 	}
 
 	/**
-	 * Retorna o index do elemento desejado
+	 * Retorna o index do primeiro retorno na lista do elemento desejado
 	 * 
 	 * @param object Elemento que busca o index
-	 * @return Retorna o index do elemtno escolhido
-	 * @throws Exception
+	 * @return Retorna o index do elemento escolhido
 	 */
-	public Object getElementoIndex(Object object) throws Exception {
+	public int indexOf(Object object) {
 
-		int index = 0;
-		boolean achou = false;
+		int index = -1;
 
-		for (int i = index; i < elementos; i++) {
+		for (int i = 0; i < elementos; i++) {
 			if (meuArray[i].equals(object)) {
-				achou = true;
 				index = i;
+				break;
 			}
 		}
-		if (achou == false) {
-			throw new Exception("Elemento não encontrado");
+		return index;
+	}
+
+	/**
+	 * Retorna o index da ultimo retorno na lista do elemento desejado
+	 * 
+	 * @param object Elemento que busca o index
+	 * @return Retorna o index do elemento escolhido
+	 */
+	public int lastIndexOf(Object object) {
+
+		int index = -1;
+
+		for (int i = 0; i < elementos; i++) {
+			if (meuArray[i].equals(object)) {
+				index = i;
+			}
 		}
 		return index;
 	}
@@ -181,6 +208,22 @@ public class MeuArrayList {
 	}
 
 	/**
+	 * @param objeto
+	 * @return
+	 */
+	public boolean contains(Object objeto) {
+
+		boolean contains = false;
+		for (int i = 0; i < elementos; i++) {
+			if (meuArray[i].equals(objeto)) {
+				contains = true;
+				break;
+			}
+		}
+		return contains;
+	}
+
+	/**
 	 * Retorna a quantidade de elementos na lista
 	 * 
 	 * @return Retorna quantidade de elementos na lista
@@ -190,12 +233,51 @@ public class MeuArrayList {
 	}
 
 	/**
+	 * Diminui a capacidade da lista para a quantidade exata de elementos
+	 * 
+	 */
+	public void trimToSize() {
+
+		if (elementos != capacidadeLista) {
+			Object[] novoArray = new Object[elementos];
+			for (int i = 0; i < elementos; i++) {
+				novoArray[i] = meuArray[i];
+			}
+			capacidadeLista = elementos;
+			meuArray = novoArray;
+		}
+	}
+
+	/**
 	 * Limpa a lista atual
 	 */
 	public void clear() {
 		// apaga a lista atual criando uma nova com o tamanho inicial
 		meuArray = new Object[TAMANHO_INICIAL];
 		this.elementos = 0;
+	}
+
+	/**
+	 * Verifica tamanho do array e aumenta seu tamanho, se necessário
+	 */
+	private void limiteArray() {
+
+		if (elementos == meuArray.length) {
+			Object[] novoArray = new Object[meuArray.length + TAMANHO_INICIAL];
+			for (int i = 0; i < elementos; i++) {
+				novoArray[i] = meuArray[i];
+			}
+			capacidadeLista += TAMANHO_INICIAL;
+			meuArray = novoArray;
+		}
+
+	}
+
+	/**
+	 * @return Retorna a capacidade da lista
+	 */
+	public int getCapacidadeLista() {
+		return capacidadeLista;
 	}
 
 	@Override

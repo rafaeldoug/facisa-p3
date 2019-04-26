@@ -4,6 +4,7 @@
  */
 package br.cesed.si.p3.array.tests;
 
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -68,7 +69,7 @@ class MeuArrayListTest {
 	}
 
 	/**
-	 * Teste de adicao de elemento com verificacao do valor
+	 * Teste de adicao com verificacao do valor do elemento
 	 */
 	@Test
 	void testAdd2() {
@@ -102,7 +103,7 @@ class MeuArrayListTest {
 	}
 
 	/**
-	 * Teste de adicao de elemento null, com lista contendo um elemento
+	 * Teste de adicao de elemento null, com lista não vazia
 	 */
 	@Test
 	void testAdd4() {
@@ -142,14 +143,14 @@ class MeuArrayListTest {
 	}
 
 	/**
-	 * Teste de adicao de elementos apenas do mesmo tipo, sendo de Integer para
-	 * String
+	 * Teste de adicao de elementos apenas do mesmo tipo, já contendo Integer e
+	 * tentando adicionar um String
 	 */
 	@Test
 	void testAdd6() {
 
 		/* Cenário */
-		
+
 		int valorInt = 10;
 		meuArray.add(valorInt);
 
@@ -161,8 +162,8 @@ class MeuArrayListTest {
 	}
 
 	/**
-	 * Teste de adicao de elementos apenas do mesmo tipo, sendo de String para
-	 * Integer
+	 * Teste de adicao de elementos apenas do mesmo tipo, já contendo String e
+	 * tentando adicionar um Integer
 	 */
 	@Test
 	void testAdd7() {
@@ -260,8 +261,8 @@ class MeuArrayListTest {
 	}
 
 	/**
-	 * Teste de adicao de elemento utilizando index do final da lista e verificando
-	 * valor do elemento adicionado
+	 * Teste de adicao de elemento utilizando ultimo index da lista, forçando
+	 * expansão, e verificando valor do elemento adicionado
 	 */
 	@Test
 	void testAddIndex4() {
@@ -285,7 +286,7 @@ class MeuArrayListTest {
 	}
 
 	/**
-	 * Teste de Exception na remoção utilizando index fora do limite da lista
+	 * Teste de Exception na adição utilizando index fora do limite da lista
 	 */
 	@Test
 	void testAddIndexException1() {
@@ -307,7 +308,7 @@ class MeuArrayListTest {
 	}
 
 	/**
-	 * Teste de Exception na remoção utilizando index negativo
+	 * Teste de Exception na adição utilizando index negativo
 	 */
 	@Test
 	void testAddIndexException2() {
@@ -324,6 +325,95 @@ class MeuArrayListTest {
 
 		Assertions.assertThrows(NumberFormatException.class, () -> {
 			meuArray.addIndex(index, elemento);
+		});
+
+	}
+
+	/**
+	 * Teste de Exception na adição utilizando objeto de tipo diferente do incial
+	 */
+	@Test
+	void testAddIndexException3() {
+
+		/* Cenário */
+
+		meuArray.add(10);
+		meuArray.add(20);
+
+		/* Verificação */
+
+		int index = -1;
+		String elemento = "string";
+
+		Assertions.assertThrows(NumberFormatException.class, () -> {
+			meuArray.addIndex(index, elemento);
+		});
+
+	}
+
+	/**
+	 * Teste de adicao de lista à atual com a lista original na sua capacidade
+	 * maxima
+	 */
+	@Test
+	void testAddAll1() {
+
+		/* Cenário */
+
+		meuArray.add(10);
+		meuArray.add(11);
+		meuArray.add(12);
+		Object[] array = { 31, 32, 33 };
+
+		/* Execução */
+
+		meuArray.addAll(array);
+
+		/* Verificação */
+
+		int tamanhoArray = 6;
+		assertEquals(meuArray.size(), tamanhoArray);
+
+	}
+
+	/**
+	 * Teste de adicao de lista à lista atual com apenas um elemento
+	 */
+	@Test
+	void testAddAll2() {
+
+		/* Cenário */
+
+		meuArray.add(10);
+		Object[] array = { 31, 32, 33 };
+
+		/* Execução */
+
+		meuArray.addAll(array);
+
+		/* Verificação */
+
+		int tamanhoArray = 4;
+		assertEquals(meuArray.size(), tamanhoArray);
+
+	}
+
+	/**
+	 * Teste de adicao de lista à lista atual com elementos de tipo diferente
+	 */
+	@Test
+	void testAddAllException1() {
+
+		/* Cenário */
+
+		meuArray.add(10);
+		Object[] array = { "eu", "sou", "string" };
+
+		/* Verificação */
+
+		Assertions.assertThrows(IllegalArgumentException.class, () -> {
+			meuArray.addAll(array);
+			;
 		});
 
 	}
@@ -483,11 +573,9 @@ class MeuArrayListTest {
 	 * Teste de retorno do index do elemento escolhido, considerando que conste na
 	 * lista
 	 * 
-	 * @throws Exception
 	 */
-
 	@Test
-	void testGetElementoIndex1() throws Exception {
+	void testIndexOf1() {
 
 		/* Cenário */
 
@@ -500,30 +588,69 @@ class MeuArrayListTest {
 
 		int index = 1; // index do elemento desejado
 
-		assertEquals(meuArray.getElementoIndex(20), index);
+		assertEquals(meuArray.indexOf(20), index);
 	}
 
 	/**
-	 * Teste de Exception com elemento que nao consta na lista
+	 * Teste de retorno do index do elemento que não se encontra na lista
 	 * 
-	 * @throws Exception
 	 */
-
 	@Test
-	void testGetElementoIndexException1() {
+	void testIndexOf2() {
 
 		/* Cenário */
 
 		meuArray.add(10);
-		meuArray.add(20);
+		meuArray.add(20); // elemento testado
+		meuArray.add(30);
+		meuArray.add(40);
 
 		/* Verificação */
 
-		int elemento = 30; // elemento que nao se encontra na lista
+		int index = -1; // index do elemento desejado
 
-		Assertions.assertThrows(Exception.class, () -> {
-			meuArray.getElementoIndex(elemento);
-		});
+		assertEquals(meuArray.indexOf(100), index);
+	}
+
+	/**
+	 * Teste de retorno do index da última aparição do elemento escolhido na lista
+	 * 
+	 */
+	@Test
+	void testLastIndexOf1() {
+
+		/* Cenário */
+
+		meuArray.add(10);
+		meuArray.add(20); // elemento buscado
+		meuArray.add(30);
+		meuArray.add(20); // ultimo do mesmo elemento buscado
+
+		/* Verificação */
+
+		int index = 3; // index do elemento desejado
+
+		assertEquals(meuArray.lastIndexOf(20), index);
+	}
+
+	/**
+	 * Teste de retorno do index do elemento que não se encontra na lista
+	 */
+	@Test
+	void testLastIndexOf2() {
+
+		/* Cenário */
+
+		meuArray.add(10);
+		meuArray.add(20); // elemento buscado
+		meuArray.add(30);
+		meuArray.add(20); // ultimo do mesmo elemento buscado
+
+		/* Verificação */
+
+		int index = -1; // index do elemento desejado
+
+		assertEquals(meuArray.lastIndexOf(100), index);
 	}
 
 	/**
@@ -649,6 +776,40 @@ class MeuArrayListTest {
 	}
 
 	/**
+	 * Teste de elemento buscado contido na lista, sendo verdade
+	 */
+	@Test
+	void testContains1() {
+
+		/* Cenário */
+
+		int elementoNaLista = 10;
+		meuArray.add(elementoNaLista);
+
+		/* Verificação */
+
+		int elementoBuscado = 10;
+		assertTrue(meuArray.contains(elementoBuscado));
+	}
+
+	/**
+	 * Teste de elemento buscado contido na lista, sendo falso
+	 */
+	@Test
+	void testContains2() {
+
+		/* Cenário */
+
+		int elementoNaLista = 10;
+		meuArray.add(elementoNaLista);
+
+		/* Verificação */
+
+		int elementoBuscado = 20;
+		assertFalse(meuArray.contains(elementoBuscado));
+	}
+
+	/**
 	 * Teste de limpeza de todos os elementos da lista
 	 */
 	@Test
@@ -695,6 +856,121 @@ class MeuArrayListTest {
 
 		int tamanhoArray = 0;
 		assertEquals(meuArray.size(), tamanhoArray);
+	}
+
+	/**
+	 * Teste de quantidade de elementos na lista
+	 */
+	@Test
+	void testSize1() {
+
+		/* Execução */
+
+		meuArray.add(10);
+
+		/* Verificação */
+
+		int tamanhoArray = 1;
+		assertEquals(meuArray.size(), tamanhoArray);
+	}
+
+	/**
+	 * Teste a diminuição do tamanho da lista para o tamanho exato de elementos na
+	 * mesma
+	 * 
+	 */
+	@Test
+	void testTrimToSize1() {
+
+		/* Cenário */
+
+		meuArray.add(10);
+
+		/* Execução */
+
+		meuArray.trimToSize();
+
+		/* Verificação */
+
+		int tamanhoArray = 1;
+		assertEquals(meuArray.getCapacidadeLista(), tamanhoArray);
+	}
+
+	/**
+	 * Teste a diminuição do tamanho da lista, com multiplos elementos, para o
+	 * tamanho exato de elementos na mesma
+	 * 
+	 */
+	@Test
+	void testTrimToSize2() {
+
+		/* Cenário */
+
+		meuArray.add(10);
+		meuArray.add(11);
+		meuArray.add(12);
+		meuArray.add(13);
+
+		/* Execução */
+
+		meuArray.trimToSize();
+
+		/* Verificação */
+
+		int tamanhoArray = 4;
+		assertEquals(meuArray.getCapacidadeLista(), tamanhoArray);
+	}
+
+	/**
+	 * Teste a diminuição do tamanho da lista, sem adicionar elementos, logo após
+	 * adiciona e executa novamente o trim
+	 * 
+	 */
+	@Test
+	void testTrimToSize3() {
+
+		/* Cenário */
+
+		meuArray.trimToSize();
+		assertEquals(meuArray.getCapacidadeLista(), 0);
+
+		meuArray.add(10);
+		meuArray.add(11);
+		meuArray.add(12);
+		meuArray.add(13);
+
+		/* Execução */
+
+		meuArray.trimToSize();
+
+		/* Verificação */
+
+		int tamanhoArray = 4;
+		assertEquals(meuArray.getCapacidadeLista(), tamanhoArray);
+	}
+
+	/**
+	 * Teste a diminuição do tamanho da lista com a lista já com o tamanho igual ao
+	 * numero de elementos
+	 * 
+	 */
+	@Test
+	void testTrimToSize4() {
+
+		/* Cenário */
+
+		meuArray.add(10);
+		meuArray.add(11);
+		meuArray.add(12);
+
+		/* Execução */
+
+		meuArray.trimToSize();
+
+		/* Verificação */
+
+		int tamanhoArray = 3;
+		assertEquals(meuArray.getCapacidadeLista(), tamanhoArray);
 	}
 
 }
