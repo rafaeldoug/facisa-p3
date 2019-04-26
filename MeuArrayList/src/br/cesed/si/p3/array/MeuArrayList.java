@@ -208,8 +208,23 @@ public class MeuArrayList {
 	}
 
 	/**
-	 * @param objeto
-	 * @return
+	 * Retorna uma copia da lista original
+	 * @return Os elementos da lista copiada
+	 */
+	public Object clone() {
+
+		Object[] copiaArray = new Object[meuArray.length];
+		for (int i = 0; i < elementos; i++) {
+			copiaArray[i] = meuArray[i];
+		}
+		return copiaArray;
+	}
+
+	/**
+	 * Retorna true se o elemento buscado se encontrar na lista
+	 * 
+	 * @param objeto Elemento a ser buscado na lista
+	 * @return True se contem e False se não contem
 	 */
 	public boolean contains(Object objeto) {
 

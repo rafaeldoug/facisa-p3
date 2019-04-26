@@ -64,7 +64,7 @@ class MeuArrayListTest {
 		/* Verificação */
 
 		int tamanhoArray = 1;
-		assertEquals(meuArray.size(), tamanhoArray);
+		assertEquals(tamanhoArray, meuArray.size());
 
 	}
 
@@ -82,7 +82,7 @@ class MeuArrayListTest {
 
 		/* Verificação */
 
-		assertEquals(meuArray.getElemento(0), 10);
+		assertEquals(10, meuArray.getElemento(0));
 
 	}
 
@@ -98,7 +98,7 @@ class MeuArrayListTest {
 
 		/* Verificação */
 
-		assertEquals(meuArray.size(), 0);
+		assertEquals(0, meuArray.size());
 
 	}
 
@@ -115,7 +115,7 @@ class MeuArrayListTest {
 
 		/* Verificação */
 
-		assertEquals(meuArray.size(), 1);
+		assertEquals(1, meuArray.size());
 
 	}
 
@@ -138,7 +138,7 @@ class MeuArrayListTest {
 		/* Verificação */
 
 		int tamanhoArray = 4;
-		assertEquals(meuArray.size(), tamanhoArray);
+		assertEquals(tamanhoArray, meuArray.size());
 
 	}
 
@@ -203,7 +203,7 @@ class MeuArrayListTest {
 		/* Verificação */
 
 		int tamanhoArray = 5;
-		assertEquals(meuArray.size(), tamanhoArray);
+		assertEquals(tamanhoArray, meuArray.size());
 
 	}
 
@@ -229,7 +229,7 @@ class MeuArrayListTest {
 
 		/* Verificação */
 
-		assertEquals(meuArray.getElemento(index), 20);
+		assertEquals(20, meuArray.getElemento(index));
 
 	}
 
@@ -256,7 +256,7 @@ class MeuArrayListTest {
 		/* Verificação */
 
 		int tamanhoArray = 4;
-		assertEquals(meuArray.size(), tamanhoArray);
+		assertEquals(tamanhoArray, meuArray.size());
 
 	}
 
@@ -281,7 +281,7 @@ class MeuArrayListTest {
 
 		/* Verificação */
 
-		assertEquals(meuArray.getElemento(index), 20);
+		assertEquals(20, meuArray.getElemento(index));
 
 	}
 
@@ -372,7 +372,7 @@ class MeuArrayListTest {
 		/* Verificação */
 
 		int tamanhoArray = 6;
-		assertEquals(meuArray.size(), tamanhoArray);
+		assertEquals(tamanhoArray, meuArray.size());
 
 	}
 
@@ -394,7 +394,7 @@ class MeuArrayListTest {
 		/* Verificação */
 
 		int tamanhoArray = 4;
-		assertEquals(meuArray.size(), tamanhoArray);
+		assertEquals(tamanhoArray, meuArray.size());
 
 	}
 
@@ -437,7 +437,7 @@ class MeuArrayListTest {
 		/* Verificação */
 
 		int tamanhoArray = 1;
-		assertEquals(meuArray.size(), tamanhoArray);
+		assertEquals(tamanhoArray, meuArray.size());
 
 	}
 
@@ -499,7 +499,7 @@ class MeuArrayListTest {
 
 		int index = 1; // indice referente ao valor 20
 
-		assertEquals(meuArray.getElemento(index), 20);
+		assertEquals(20, meuArray.getElemento(index));
 	}
 
 	/**
@@ -522,7 +522,7 @@ class MeuArrayListTest {
 		int valorElemento = 1; // representa o primeiro valor adicionado na lista
 		for (int i = 0; i < meuArray.size(); i++) {
 			meuArray.getElemento(i);
-			assertEquals(meuArray.getElemento(i), valorElemento);
+			assertEquals(valorElemento, meuArray.getElemento(i));
 			valorElemento++; // incrementa para o proximo valor sequencial de teste na lista
 		}
 
@@ -588,7 +588,7 @@ class MeuArrayListTest {
 
 		int index = 1; // index do elemento desejado
 
-		assertEquals(meuArray.indexOf(20), index);
+		assertEquals(index, meuArray.indexOf(20));
 	}
 
 	/**
@@ -609,7 +609,7 @@ class MeuArrayListTest {
 
 		int index = -1; // index do elemento desejado
 
-		assertEquals(meuArray.indexOf(100), index);
+		assertEquals(index, meuArray.indexOf(100));
 	}
 
 	/**
@@ -630,7 +630,7 @@ class MeuArrayListTest {
 
 		int index = 3; // index do elemento desejado
 
-		assertEquals(meuArray.lastIndexOf(20), index);
+		assertEquals(index, meuArray.lastIndexOf(20));
 	}
 
 	/**
@@ -650,7 +650,7 @@ class MeuArrayListTest {
 
 		int index = -1; // index do elemento desejado
 
-		assertEquals(meuArray.lastIndexOf(100), index);
+		assertEquals(index, meuArray.lastIndexOf(100));
 	}
 
 	/**
@@ -672,7 +672,7 @@ class MeuArrayListTest {
 
 		/* Verificação */
 
-		assertEquals(meuArray.getElemento(index), 30);
+		assertEquals(30, meuArray.getElemento(index));
 	}
 
 	/**
@@ -694,7 +694,7 @@ class MeuArrayListTest {
 
 		/* Verificação */
 
-		assertEquals(meuArray.getElemento(index), elementoAtual);
+		assertEquals(elementoAtual, meuArray.getElemento(index));
 		assertTrue(meuArray.getElemento(index) != null);
 	}
 
@@ -756,7 +756,7 @@ class MeuArrayListTest {
 
 		/* Verificação */
 
-		assertEquals(meuArray.isEmpty(), false); // nao deve estar vazia
+		assertFalse(meuArray.isEmpty()); // nao deve estar vazia
 	}
 
 	/**
@@ -772,8 +772,58 @@ class MeuArrayListTest {
 
 		/* Verificação */
 
-		assertEquals(meuArray.isEmpty(), true); // deve estar vazia
+		assertTrue(meuArray.isEmpty()); // deve estar vazia
 	}
+
+	/**
+	 * Teste de cópia da lista
+	 */
+	@Test
+	void testClone1() {
+
+		/* Cenário */
+
+		meuArray.add(10);
+
+		/* Execução */
+
+		Object[] copiaArray = (Object[]) meuArray.clone();
+
+		/* Verificação */
+		
+		assertEquals(copiaArray.length, meuArray.getCapacidadeLista());
+		for (int i = 0; i < meuArray.size(); i++) {
+			assertEquals(copiaArray[i], meuArray.getElemento(i)); 
+		};
+
+	}
+	
+	/**
+	 * Teste de clone da lista com capacidade incial estourada
+	 */
+	@Test
+	void testClone2() {
+
+		/* Cenário */
+
+		meuArray.add(10);
+		meuArray.add(11);
+		meuArray.add(12);
+		meuArray.add(13);
+
+		/* Execução */
+
+		Object[] copiaArray = (Object[]) meuArray.clone();
+
+		/* Verificação */
+		
+		assertEquals(copiaArray.length, meuArray.getCapacidadeLista());
+		for (int i = 0; i < meuArray.size(); i++) {
+			assertEquals(copiaArray[i], meuArray.getElemento(i)); 
+		};
+
+	}
+
 
 	/**
 	 * Teste de elemento buscado contido na lista, sendo verdade
@@ -830,7 +880,7 @@ class MeuArrayListTest {
 		/* Verificação */
 
 		int tamanhoArray = 0;
-		assertEquals(meuArray.size(), tamanhoArray);
+		assertEquals(tamanhoArray, meuArray.size());
 	}
 
 	/**
@@ -855,7 +905,7 @@ class MeuArrayListTest {
 		/* Verificação */
 
 		int tamanhoArray = 0;
-		assertEquals(meuArray.size(), tamanhoArray);
+		assertEquals(tamanhoArray, meuArray.size());
 	}
 
 	/**
@@ -871,7 +921,7 @@ class MeuArrayListTest {
 		/* Verificação */
 
 		int tamanhoArray = 1;
-		assertEquals(meuArray.size(), tamanhoArray);
+		assertEquals(tamanhoArray, meuArray.size());
 	}
 
 	/**
@@ -893,7 +943,7 @@ class MeuArrayListTest {
 		/* Verificação */
 
 		int tamanhoArray = 1;
-		assertEquals(meuArray.getCapacidadeLista(), tamanhoArray);
+		assertEquals(tamanhoArray, meuArray.getCapacidadeLista());
 	}
 
 	/**
@@ -918,7 +968,7 @@ class MeuArrayListTest {
 		/* Verificação */
 
 		int tamanhoArray = 4;
-		assertEquals(meuArray.getCapacidadeLista(), tamanhoArray);
+		assertEquals(tamanhoArray, meuArray.getCapacidadeLista());
 	}
 
 	/**
@@ -932,7 +982,7 @@ class MeuArrayListTest {
 		/* Cenário */
 
 		meuArray.trimToSize();
-		assertEquals(meuArray.getCapacidadeLista(), 0);
+		assertEquals(0, meuArray.getCapacidadeLista());
 
 		meuArray.add(10);
 		meuArray.add(11);
@@ -946,7 +996,7 @@ class MeuArrayListTest {
 		/* Verificação */
 
 		int tamanhoArray = 4;
-		assertEquals(meuArray.getCapacidadeLista(), tamanhoArray);
+		assertEquals(tamanhoArray, meuArray.getCapacidadeLista());
 	}
 
 	/**
@@ -970,7 +1020,7 @@ class MeuArrayListTest {
 		/* Verificação */
 
 		int tamanhoArray = 3;
-		assertEquals(meuArray.getCapacidadeLista(), tamanhoArray);
+		assertEquals(tamanhoArray, meuArray.getCapacidadeLista());
 	}
 
 }
