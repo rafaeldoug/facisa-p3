@@ -37,11 +37,17 @@ public class MeuArrayList {
 			}
 			meuArray = novoArray;
 		}
-		
+
+		if (elementos != 0 && object != null) {
+			if (meuArray[0].getClass() != object.getClass()) {
+				throw new IllegalArgumentException("Adicione apenas objetos do mesmo tipo");
+			}
+		}
+
 		if (object != null) {
 			meuArray[elementos] = object;
 			elementos++;
-		}	
+		}
 	}
 
 	/**
@@ -66,14 +72,20 @@ public class MeuArrayList {
 			meuArray = novoArray;
 		}
 
+		if (elementos != 0) {
+			if (meuArray[0].getClass() != object.getClass()) {
+				throw new IllegalArgumentException("Adicione apenas objetos do mesmo tipo");
+			}
+		}
+
 		for (int i = elementos; i > index; i--) {
 			meuArray[i] = meuArray[i - 1];
 		}
-		
+
 		if (object != null) {
 			meuArray[index] = object;
 			elementos++;
-		}	
+		}
 	}
 
 	/**
@@ -152,7 +164,7 @@ public class MeuArrayList {
 		} else if (index < 0) {
 			throw new NumberFormatException();
 		}
-		
+
 		if (objeto != null) {
 			meuArray[index] = objeto;
 		}

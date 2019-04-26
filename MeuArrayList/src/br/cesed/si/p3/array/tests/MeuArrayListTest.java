@@ -142,6 +142,44 @@ class MeuArrayListTest {
 	}
 
 	/**
+	 * Teste de adicao de elementos apenas do mesmo tipo, sendo de Integer para
+	 * String
+	 */
+	@Test
+	void testAdd6() {
+
+		/* Cenário */
+		
+		int valorInt = 10;
+		meuArray.add(valorInt);
+
+		/* Verificação */
+
+		Assertions.assertThrows(IllegalArgumentException.class, () -> {
+			meuArray.add("string");
+		});
+	}
+
+	/**
+	 * Teste de adicao de elementos apenas do mesmo tipo, sendo de String para
+	 * Integer
+	 */
+	@Test
+	void testAdd7() {
+
+		/* Cenário */
+
+		meuArray.add("string");
+
+		/* Verificação */
+
+		int valorInt = 20;
+		Assertions.assertThrows(IllegalArgumentException.class, () -> {
+			meuArray.add(valorInt);
+		});
+	}
+
+	/**
 	 * Teste de adicao de elemento no index indicado, verificando tamanho da lista
 	 */
 	@Test
