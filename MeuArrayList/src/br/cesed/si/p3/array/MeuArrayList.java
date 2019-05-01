@@ -32,13 +32,9 @@ public class MeuArrayList {
 	 */
 	public void add(Object object) {
 
-		this.limiteArray();
+		this.limiteArray(); // verifica o limite do array
 
-		if (elementos != 0 && object != null) {
-			if (meuArray[0].getClass() != object.getClass()) {
-				throw new IllegalArgumentException("Adicione apenas objetos do mesmo tipo");
-			}
-		}
+		this.tipoObjetos(object); // verifica o tipo dos elementos ja contidos no array
 
 		if (object != null) {
 			meuArray[elementos] = object;
@@ -54,19 +50,11 @@ public class MeuArrayList {
 	 */
 	public void addIndex(int index, Object object) {
 
-		if (index >= elementos) {
-			throw new IndexOutOfBoundsException();
-		} else if (index < 0) {
-			throw new NumberFormatException();
-		}
+		this.verificaIndex(index); // verifica se o index eh valido
 
-		this.limiteArray();
+		this.limiteArray(); // verifica o limite do array
 
-		if (elementos != 0) {
-			if (meuArray[0].getClass() != object.getClass()) {
-				throw new IllegalArgumentException("Adicione apenas objetos do mesmo tipo");
-			}
-		}
+		this.tipoObjetos(object); // verifica o tipo dos elementos ja contidos no array
 
 		for (int i = elementos; i > index; i--) {
 			meuArray[i] = meuArray[i - 1];
@@ -85,9 +73,10 @@ public class MeuArrayList {
 	 */
 	public void addAll(Object[] object) {
 
-		this.limiteArray();
+		this.limiteArray(); // verifica o limite do array
 
-		if (elementos != 0) {
+		// verifica os tipos dos primeiros elementos do array de destino e do array a ser adicionado
+		if (elementos != 0 && object != null) {
 			if (meuArray[0].getClass() != object[0].getClass()) {
 				throw new IllegalArgumentException("Adicione apenas objetos do mesmo tipo");
 			}
@@ -109,11 +98,7 @@ public class MeuArrayList {
 	 */
 	public void remove(int index) {
 
-		if (index >= elementos) {
-			throw new IndexOutOfBoundsException();
-		} else if (index < 0) {
-			throw new NumberFormatException();
-		}
+		this.verificaIndex(index); // verifica se o index eh valido
 
 		int prox_elemento = index + 1;
 
@@ -133,11 +118,8 @@ public class MeuArrayList {
 	 */
 	public Object getElemento(int index) {
 
-		if (index >= elementos) {
-			throw new IndexOutOfBoundsException();
-		} else if (index < 0) {
-			throw new NumberFormatException();
-		}
+		this.verificaIndex(index); // verifica se o index eh valido
+		
 		return meuArray[index];
 	}
 
@@ -186,11 +168,7 @@ public class MeuArrayList {
 	 */
 	public void setElemento(int index, Object objeto) {
 
-		if (index >= elementos) {
-			throw new IndexOutOfBoundsException();
-		} else if (index < 0) {
-			throw new NumberFormatException();
-		}
+		this.verificaIndex(index); // verifica se o index eh valido
 
 		if (objeto != null) {
 			meuArray[index] = objeto;
@@ -209,6 +187,7 @@ public class MeuArrayList {
 
 	/**
 	 * Retorna uma copia da lista original
+	 * 
 	 * @return Os elementos da lista copiada
 	 */
 	public Object clone() {
@@ -267,9 +246,18 @@ public class MeuArrayList {
 	 * Limpa a lista atual
 	 */
 	public void clear() {
-		// apaga a lista atual criando uma nova com o tamanho inicial
-		meuArray = new Object[TAMANHO_INICIAL];
+
+		meuArray = new Object[TAMANHO_INICIAL]; // apaga a lista atual criando uma nova com o tamanho inicial
 		this.elementos = 0;
+	}
+
+	/**
+	 * Retorna a capacidade da lista
+	 * 
+	 * @return 
+	 */
+	public int getCapacidadeLista() {
+		return capacidadeLista;
 	}
 
 	/**
@@ -289,10 +277,31 @@ public class MeuArrayList {
 	}
 
 	/**
-	 * @return Retorna a capacidade da lista
+	 * Verifica a compatibilidade do tipo dos objetos antes de adicionar ao array
+	 * 
+	 * @param object - Objeto a ser verificado
 	 */
-	public int getCapacidadeLista() {
-		return capacidadeLista;
+	private void tipoObjetos(Object object) {
+
+		if (elementos != 0 && object != null) {
+			if (meuArray[0].getClass() != object.getClass()) {
+				throw new IllegalArgumentException("Adicione apenas objetos do mesmo tipo");
+			}
+		}
+	}
+	
+	/**
+	 * Verifica se o index indicado eh valido
+	 * 
+	 * @param index - Index a ser verificado
+	 */
+	private void verificaIndex(int index) {
+		
+		if (index >= elementos) {
+			throw new ArrayIndexOutOfBoundsException();
+		} else if (index < 0) {
+			throw new NumberFormatException();
+		}
 	}
 
 	@Override

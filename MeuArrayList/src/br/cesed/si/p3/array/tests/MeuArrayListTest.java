@@ -143,8 +143,8 @@ class MeuArrayListTest {
 	}
 
 	/**
-	 * Teste de adicao de elementos apenas do mesmo tipo, já contendo Integer e
-	 * tentando adicionar um String
+	 * Teste de adicao de elementos, já contendo Integer e tentando adicionar um
+	 * String
 	 */
 	@Test
 	void testAdd6() {
@@ -162,8 +162,8 @@ class MeuArrayListTest {
 	}
 
 	/**
-	 * Teste de adicao de elementos apenas do mesmo tipo, já contendo String e
-	 * tentando adicionar um Integer
+	 * Teste de adicao de elementos, já contendo String e tentando adicionar um
+	 * Integer
 	 */
 	@Test
 	void testAdd7() {
@@ -790,14 +790,15 @@ class MeuArrayListTest {
 		Object[] copiaArray = (Object[]) meuArray.clone();
 
 		/* Verificação */
-		
+
 		assertEquals(copiaArray.length, meuArray.getCapacidadeLista());
 		for (int i = 0; i < meuArray.size(); i++) {
-			assertEquals(copiaArray[i], meuArray.getElemento(i)); 
-		};
+			assertEquals(copiaArray[i], meuArray.getElemento(i));
+		}
+		;
 
 	}
-	
+
 	/**
 	 * Teste de clone da lista com capacidade incial estourada
 	 */
@@ -816,14 +817,14 @@ class MeuArrayListTest {
 		Object[] copiaArray = (Object[]) meuArray.clone();
 
 		/* Verificação */
-		
+
 		assertEquals(copiaArray.length, meuArray.getCapacidadeLista());
 		for (int i = 0; i < meuArray.size(); i++) {
-			assertEquals(copiaArray[i], meuArray.getElemento(i)); 
-		};
+			assertEquals(copiaArray[i], meuArray.getElemento(i));
+		}
+		;
 
 	}
-
 
 	/**
 	 * Teste de elemento buscado contido na lista, sendo verdade
